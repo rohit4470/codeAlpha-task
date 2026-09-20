@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double num1, num2;
+    char op;
+
+    cout << "====================================\n";
+    cout << "   CodeAlpha - Task 1: Calculator   \n";
+    cout << "====================================\n";
+
+    cout << "Pehla number enter karein: ";
+    cin >> num1;
+
+    cout << "Operator enter karein (+, -, *, /): ";
+    cin >> op;
+
+    cout << "Dusra number enter karein: ";
+    cin >> num2;
+
+    cout << "------------------------------------\n";
+    switch (op) {
+        case '+':
+            cout << "Result: " << num1 + num2 << endl;
+            break;
+        case '-':
+            cout << "Result: " << num1 - num2 << endl;
+            break;
+        case '*':
+            cout << "Result: " << num1 * num2 << endl;
+            break;
+        case '/':
+            if (num2 != 0)
+                cout << "Result: " << num1 / num2 << endl;
+            else
+                cout << "Error: Zero se divide nahi kar sakte!" << endl;
+            break;
+        default:
+            cout << "Error: Galat operator enter kiya hai!" << endl;
+    }
+    cout << "------------------------------------\n";
+
+    return 0;
+}
