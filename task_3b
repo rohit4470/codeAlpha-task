@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    int accNo;
+    string name;
+    double balance;
+
+public:
+    BankAccount(int acc, string n, double bal) {
+        accNo = acc;
+        name = n;
+        balance = bal;
+    }
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "✅ Deposit Successful! Naya Balance: ₹" << balance << endl;
+        } else {
+            cout << "❌ Invalid Amount!" << endl;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "✅ Withdrawal Successful! Naya Balance: ₹" << balance << endl;
+        } else if (amount > balance) {
+            cout << "❌ Insufficient Balance!" << endl;
+        } else {
+            cout << "❌ Invalid Amount!" << endl;
+        }
+    }
+
+    void display() {
+        cout << "\n--- Account Details ---\n";
+        cout << "Account No: " << accNo << endl;
+        cout << "Holder Name: " << name << endl;
+        cout << "Current Balance: ₹" << balance << endl;
+    }
+};
+
+int main() {
+    int accNo;
+    string name;
+    double initialBalance;
+
+    cout << "====================================\n";
+    cout << "    Task 3: Banking Management      \n";
+    cout << "====================================\n";
+
+    cout << "Account Number enter karein: ";
+    cin >> accNo;
+    cout << "Holder Name enter karein: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Initial Deposit Amount: ₹";
+    cin >> initialBalance;
+
+    BankAccount account(accNo, name, initialBalance);
+    int choice;
+
+    while (true) {
+        cout << "\n------------------------------------\n";
+        cout << "1. Deposit Money\n";
+        cout << "2. Withdraw Money\n";
+        cout << "3. Check Balance\n";
+        cout << "4. Exit\n";
+        cout << "Option select karein: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            double amt;
+            cout << "Deposit Amount enter karein: ₹";
+            cin >> amt;
+            account.deposit(amt);
+        } 
+        else if (choice == 2) {
+            double amt;
+            cout << "Withdrawal Amount enter karein: ₹";
+            cin >> amt;
+            account.withdraw(amt);
+        } 
+        else if (choice == 3) {
+            account.display();
+        } 
+        else if (choice == 4) {
+            cout << "Banking system closed.\n";
+            break;
+        } 
+        else {
+            cout << "❌ Invalid option!\n";
+        }
+    }
+
+    return 0;
+}
